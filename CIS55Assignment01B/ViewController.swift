@@ -9,7 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet var basePayTextField : UITextField!
+    @IBOutlet var noDaysTextField : UISlider!
+   
+    @IBOutlet var resultsTextView : UITextView!
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

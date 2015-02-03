@@ -10,21 +10,19 @@ import UIKit
 
 class PayRateModel {
 
-var basePay = 0.01
-var totalPay = 0.01
-var payRate : [Double] = [0.01]
-var noDays: Int = 5
-   
-
-    func calculatePayRate() {
+    func calculatePayRate(basePay: Double, noDays: Int) -> String {
+        
+        var newBasePay = basePay / 100
+        var totalPay: Double = 0.0
+        var results = ""
+        
         for var i = 0;i < noDays; ++i {
-            println("Day \(i + 1) is \(basePay)" )
-            basePay = basePay * 2
-            totalPay = totalPay + basePay
-            payRate.append(basePay)
-            }
-    println("The total pay for the month is \(totalPay)")
+            totalPay = totalPay + newBasePay
+            results += "On day \(i + 1) daily pay earned was $" + NSString(format: "%.2f", newBasePay) + " and total pay earned was $" + NSString(format: "%.2f", totalPay) + "\n"
+            newBasePay = newBasePay * 2
+        }
+        
+        return results
     }
-
-
 }
+

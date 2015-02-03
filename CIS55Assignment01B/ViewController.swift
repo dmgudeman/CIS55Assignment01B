@@ -9,23 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet var basePayTextField : UITextField!
-    @IBOutlet var noDaysTextField : UISlider!
    
-    @IBOutlet var resultsTextView : UITextView!
-
+    var payRateModel = PayRateModel()
     
+    @IBOutlet var basePayTextField : UITextField!
+    @IBOutlet var resultsTextView : UITextView!
+    @IBOutlet weak var daysTextField: UITextField!
+    
+    @IBAction func calculateTapped(sender : AnyObject) {
+        var basePay: Double = (basePayTextField.text as NSString).doubleValue
+        var noDays: Int = (daysTextField.text as NSString).integerValue
+        resultsTextView.text = (payRateModel.calculatePayRate(basePay, noDays: noDays))
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
 }
 
